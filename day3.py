@@ -22,3 +22,23 @@ for line in lines:
     result += int(max_num)
 
 print(result)
+
+### Part 2 ###
+result = 0
+
+for line in lines:
+    max_num = str(line[-12:])
+    for i in range(len(line) - 13, -1, -1):
+        candidate = line[i]
+        batch_max = "0"
+        for j in range(len(max_num)-1, -1, -1):
+            candidate_max = f"{candidate}{max_num[:j]}{max_num[j+1:]}"
+            if int(candidate_max) > int(batch_max):
+                batch_max = candidate_max
+        
+        if int(batch_max) > int(max_num):
+            max_num = batch_max
+
+    result += int(max_num)
+
+print(result)
