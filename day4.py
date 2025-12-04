@@ -1,7 +1,6 @@
 with open("day4.txt") as f:
     lines = [line.strip() for line in f.readlines()]
 
-### Day 1 ###
 def count_adjacent(grid, x, y):
     total = 0
     height = len(grid)
@@ -24,6 +23,17 @@ def count_adjacent(grid, x, y):
 
     return total
 
+### Day 1 ###
+result = 0
+for y in range(len(lines)):
+    for x in range(len(lines[0])):
+        if lines[y][x] == "@":
+            count = count_adjacent(lines, x, y)
+            if count < 4:
+                result += 1
+print(result)
+
+### Day 2 ###
 result = 0
 while True:
     curr_result = 0
