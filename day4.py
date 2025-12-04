@@ -25,10 +25,19 @@ def count_adjacent(grid, x, y):
     return total
 
 result = 0
-for y in range(len(lines)):
-    for x in range(len(lines[0])):
-        if lines[y][x] == "@":
-            count = count_adjacent(lines, x, y)
-            if count < 4:
-                result += 1
+while True:
+    curr_result = 0
+    to_be_removed = []
+    for y in range(len(lines)):
+        for x in range(len(lines[0])):
+            if lines[y][x] == "@":
+                count = count_adjacent(lines, x, y)
+                if count < 4:
+                    curr_result += 1
+                    to_be_removed.append((x, y))
+    result += curr_result
+    if curr_result == 0:
+         break
+    for x, y in to_be_removed:
+        lines[y] = lines[y][:x] + "." + lines[y][x+1:]
 print(result)
