@@ -14,7 +14,7 @@ for lower_range, higher_range in ranges:
 
 print(result)
 
-### Part 1 ###
+### Part 2 ###
 result = 0
 for lower_range, higher_range in ranges:
     for num in range(int(lower_range), int(higher_range) + 1):
